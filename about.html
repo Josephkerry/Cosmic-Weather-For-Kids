@@ -7,10 +7,11 @@
   <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/feather-icons"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
 
   <style>
+    /* Vanta background */
     #vanta-bg {
       position: fixed;
       top: 0;
@@ -20,7 +21,6 @@
       z-index: 0;
       overflow: hidden;
     }
-
     #vanta-bg canvas {
       width: 100% !important;
       height: 100% !important;
@@ -28,41 +28,33 @@
       display: block;
     }
 
-    .about-gradient {
-      background: linear-gradient(135deg, #0f172a 0%, #374151 30%, #6b7280 70%, #9ca3af 100%);
-    }
-
+    /* Gradients & floating */
     .text-about {
-      background: linear-gradient(90deg, #9ca3af, #6b7280, #374151);
+      background: linear-gradient(90deg, #38bdf8, #2563eb, #1e3a8a);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
-
     .floating {
       animation: floating 6s ease-in-out infinite;
     }
-
     @keyframes floating {
-      0% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(-15px);
-      }
-      100% {
-        transform: translateY(0px);
-      }
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
     }
 
+    /* Mobile menu smooth slide */
     #mobile-menu {
-      transition: all 0.3s ease-in-out;
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.3s ease-in-out;
     }
   </style>
 </head>
 
 <body class="min-h-screen text-white overflow-x-hidden bg-black">
-  <div id="vanta-bg" class="fixed inset-0 z-0"></div>
+  <div id="vanta-bg"></div>
 
   <!-- Navigation -->
   <nav class="relative z-10 py-6 px-6 md:px-12 backdrop-blur-md bg-black/30">
@@ -90,7 +82,7 @@
     <!-- Mobile Dropdown -->
     <div
       id="mobile-menu"
-      class="hidden flex-col space-y-4 mt-4 md:hidden bg-black/70 backdrop-blur-md rounded-lg p-4"
+      class="flex-col space-y-4 mt-4 md:hidden bg-black/70 backdrop-blur-md rounded-lg p-4"
     >
       <a href="index.html" class="hover:text-cyan-200 transition-colors block">Home</a>
       <a href="solar-storms.html" class="hover:text-cyan-200 transition-colors block">Solar Storms</a>
@@ -123,13 +115,10 @@
               Our <span class="text-about">Mission</span>
             </h2>
             <p class="text-lg text-gray-300 mb-6">
-              Cosmic Weather For Kids is dedicated to making space weather science accessible and engaging for
-              especially for the young ones. We believe that understanding the Sun's behavior and its effects on Earth
-              is crucial in our technology-dependent world.
+              Cosmic Weather For Kids is dedicated to making space weather science accessible and engaging for the young ones. We believe that understanding the Sun's behavior and its effects on Earth is crucial in our technology-dependent world.
             </p>
             <p class="text-lg text-gray-300">
-              Through accurate information, stunning visuals, and educational content, we aim to inspire curiosity about
-              our cosmic environment and promote awareness of space weather's importance.
+              Through accurate information, stunning visuals, and educational content, we aim to inspire curiosity about our cosmic environment and promote awareness of space weather's importance.
             </p>
           </div>
           <div class="md:w-1/2 relative">
@@ -138,12 +127,11 @@
               alt="Space education"
               class="rounded-xl shadow-2xl border border-gray-900/50 floating"
             />
-            <div class="absolute -bottom-6 -left-6 w-24 h-24 rounded-full bg-gray-600/30 blur-xl"></div>
+            <div class="absolute -bottom-6 -left-6 w-24 h-24 rounded-full bg-blue-500/30 blur-xl"></div>
           </div>
         </div>
       </div>
     </section>
-
 
     <!-- Space Agency Section -->
     <section class="py-20 px-6 md:px-12">
@@ -151,23 +139,14 @@
         <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center">
           Space <span class="text-about">Agencies</span>
         </h2>
-
         <div class="grid md:grid-cols-2 gap-8">
           <div class="bg-slate-900/50 p-8 rounded-xl border border-blue-900/50">
             <h3 class="text-2xl font-bold mb-4 text-blue-300">You could check out</h3>
             <ul class="space-y-3 text-gray-300">
-              <li class="flex items-center">
-                <i data-feather="globe" class="mr-3 text-blue-300"></i> NASA
-              </li>
-              <li class="flex items-center">
-                <i data-feather="globe" class="mr-3 text-blue-300"></i> European Space Agency
-              </li>
-              <li class="flex items-center">
-                <i data-feather="globe" class="mr-3 text-blue-300"></i> NOAA Space Weather Prediction Center
-              </li>
-              <li class="flex items-center">
-                <i data-feather="globe" class="mr-3 text-blue-300"></i> Japanese Aerospace Exploration Agency
-              </li>
+              <li class="flex items-center"><i data-feather="globe" class="mr-3 text-blue-300"></i> NASA</li>
+              <li class="flex items-center"><i data-feather="globe" class="mr-3 text-blue-300"></i> European Space Agency</li>
+              <li class="flex items-center"><i data-feather="globe" class="mr-3 text-blue-300"></i> NOAA Space Weather Prediction Center</li>
+              <li class="flex items-center"><i data-feather="globe" class="mr-3 text-blue-300"></i> Japanese Aerospace Exploration Agency</li>
             </ul>
           </div>
         </div>
@@ -181,7 +160,7 @@
       <div class="flex flex-col md:flex-row justify-between items-center">
         <div class="flex items-center space-x-2 mb-6 md:mb-0">
           <i data-feather="moon" class="text-indigo-300"></i>
-          <span class="text-xl font-bold text-cosmic">CosmicWeather</span>
+          <span class="text-xl font-bold text-about">CosmicWeather</span>
         </div>
       </div>
       <div class="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400">
@@ -191,22 +170,22 @@
   </footer>
 
   <script>
-    // Initialize Vanta.js background
+    // Vanta Globe background (like Satellites page)
     VANTA.GLOBE({
       el: "#vanta-bg",
       mouseControls: true,
       touchControls: true,
       gyroControls: false,
-      minHeight: 200.00,
-      minWidth: 200.00,
-      scale: 1.00,
-      scaleMobile: 1.00,
+      minHeight: 200,
+      minWidth: 200,
+      scale: 1.0,
+      scaleMobile: 1.0,
       color: 0x3b82f6,
       backgroundColor: 0x0f172a,
       size: 0.8
     });
 
-    // Initialize feather icons
+    // Feather icons
     feather.replace();
 
     // Mobile menu toggle
@@ -216,7 +195,7 @@
 
     menuBtn.addEventListener('click', () => {
       isOpen = !isOpen;
-      mobileMenu.classList.toggle('hidden', !isOpen);
+      mobileMenu.style.maxHeight = isOpen ? mobileMenu.scrollHeight + "px" : "0";
       menuBtn.innerHTML = `<i data-feather="${isOpen ? 'x' : 'menu'}"></i>`;
       feather.replace();
     });
@@ -224,7 +203,7 @@
     // Page animations
     document.addEventListener('DOMContentLoaded', () => {
       anime({
-        targets: '.text-cosmic',
+        targets: '.text-about',
         backgroundPosition: ['0% 50%', '100% 50%'],
         duration: 8000,
         easing: 'linear',
