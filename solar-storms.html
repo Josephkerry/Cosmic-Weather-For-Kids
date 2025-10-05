@@ -254,6 +254,56 @@
 </footer>
 
 <script>
-  // Initialize Vanta.NET
-  VANTA.NET({
-    el: "#vanta
+    // Initialize Vanta.js background
+    VANTA.GLOBE({
+      el: "#vanta-bg",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00,
+      color: 0x3b82f6,
+      backgroundColor: 0x0f172a,
+      size: 0.8
+    });
+
+    // Initialize feather icons
+    feather.replace();
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    let isOpen = false;
+
+    menuBtn.addEventListener('click', () => {
+      isOpen = !isOpen;
+      mobileMenu.classList.toggle('hidden', !isOpen);
+      menuBtn.innerHTML = `<i data-feather="${isOpen ? 'x' : 'menu'}"></i>`;
+      feather.replace();
+    });
+
+    // Page animations
+    document.addEventListener('DOMContentLoaded', () => {
+      anime({
+        targets: '.text-cosmic',
+        backgroundPosition: ['0% 50%', '100% 50%'],
+        duration: 8000,
+        easing: 'linear',
+        loop: true
+      });
+
+      anime({
+        targets: ['.floating', 'section'],
+        translateY: [30, 0],
+        opacity: [0, 1],
+        duration: 1000,
+        delay: anime.stagger(200),
+        easing: 'easeOutExpo'
+      });
+    });
+  </script>
+</body>
+</html>
+
