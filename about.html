@@ -180,4 +180,66 @@
     <div class="max-w-7xl mx-auto">
       <div class="flex flex-col md:flex-row justify-between items-center">
         <div class="flex items-center space-x-2 mb-6 md:mb-0">
-          <i data-feather="moon
+          <i data-feather="moon" class="text-indigo-300"></i>
+          <span class="text-xl font-bold text-cosmic">CosmicWeather</span>
+        </div>
+      </div>
+      <div class="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400">
+        <p>© 2025 Cosmic Weather For Kids. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Initialize Vanta.js background
+    VANTA.GLOBE({
+      el: "#vanta-bg",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00,
+      color: 0x3b82f6,
+      backgroundColor: 0x0f172a,
+      size: 0.8
+    });
+
+    // Initialize feather icons
+    feather.replace();
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    let isOpen = false;
+
+    menuBtn.addEventListener('click', () => {
+      isOpen = !isOpen;
+      mobileMenu.classList.toggle('hidden', !isOpen);
+      menuBtn.innerHTML = `<i data-feather="${isOpen ? 'x' : 'menu'}"></i>`;
+      feather.replace();
+    });
+
+    // Page animations
+    document.addEventListener('DOMContentLoaded', () => {
+      anime({
+        targets: '.text-cosmic',
+        backgroundPosition: ['0% 50%', '100% 50%'],
+        duration: 8000,
+        easing: 'linear',
+        loop: true
+      });
+
+      anime({
+        targets: ['.floating', 'section'],
+        translateY: [30, 0],
+        opacity: [0, 1],
+        duration: 1000,
+        delay: anime.stagger(200),
+        easing: 'easeOutExpo'
+      });
+    });
+  </script>
+</body>
+</html>
